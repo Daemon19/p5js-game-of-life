@@ -5,6 +5,11 @@ const updateTime = 1000 / updatePerSec;
 const grid = [];
 let running = false;
 let nextUpdate = updateTime;
+let font;
+
+function preload() {
+    font = loadFont("assets/iosevka-ss14-bold.ttf");
+}
 
 function setup() {
     canvas = createCanvas(windowWidth, windowHeight);
@@ -22,6 +27,7 @@ function draw() {
     updateGrid();
     background(0);
     drawGrid();
+    drawInfoText();
 }
 
 function keyPressed() {
@@ -101,6 +107,7 @@ function drawGrid() {
 
             if (!running) {
                 stroke(color("gray"));
+                strokeWeight(1);
                 noFill();
                 drawCell();
             }
@@ -128,4 +135,23 @@ function initGrid() {
     grid[0][1] = true;
     grid[1][0] = true;
     grid[1][1] = true;
+}
+
+function drawInfoText() {
+    if (running) return;
+
+    stroke(0);
+    strokeWeight(3);
+    fill(255);
+    textFont(font);
+    textSize(20);
+    textAlign(LEFT, BOTTOM);
+    text(
+        `
+Left mouse button -> activate a cell
+right mouse button -> deactivate a cell
+space keyboard key -> run or pause the game`,
+        20,
+        height - 20
+    );
 }
