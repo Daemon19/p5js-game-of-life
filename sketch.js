@@ -34,7 +34,7 @@ function handleInput() {
 
     const row = floor(mouseY / cellSize);
     const col = floor(mouseX / cellSize);
-    grid[row][col] = true;
+    grid[row][col] = mouseButton === LEFT;
 }
 
 function updateGrid() {
