@@ -115,4 +115,9 @@ function initGrid() {
             grid[r].push(false);
         }
     }
+
+    grid[0][0] = true;
+    grid[0][1] = true;
+    grid[1][0] = true;
+    grid[1][1] = true;
 }
