@@ -91,18 +91,26 @@ function GetNeighbours(grid, row, col) {
 }
 
 function drawGrid() {
-    const fillColor = running ? color(0, 255, 0) : "gray";
+    const fillColor = running ? color(0, 255, 0) : "white";
 
     for (let r = 0; r < grid.length; r++) {
         for (let c = 0; c < grid[r].length; c++) {
+            const x = c * cellSize;
+            const y = r * cellSize;
+            const drawCell = () => rect(x, y, cellSize, cellSize);
+
+            if (!running) {
+                stroke(color("gray"));
+                noFill();
+                drawCell();
+            }
+
             const live = grid[r][c];
             if (!live) continue;
 
-            const x = c * cellSize;
-            const y = r * cellSize;
             noStroke();
             fill(fillColor);
-            rect(x, y, cellSize, cellSize);
+            drawCell();
         }
     }
 }
