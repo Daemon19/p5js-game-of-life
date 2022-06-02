@@ -85,6 +85,8 @@ function GetNeighbours(grid, row, col) {
 }
 
 function drawGrid() {
+    const fillColor = running ? color(0, 255, 0) : "gray";
+
     for (let r = 0; r < grid.length; r++) {
         for (let c = 0; c < grid[r].length; c++) {
             const live = grid[r][c];
@@ -93,7 +95,7 @@ function drawGrid() {
             const x = c * cellSize;
             const y = r * cellSize;
             noStroke();
-            fill("limegreen");
+            fill(fillColor);
             rect(x, y, cellSize, cellSize);
         }
     }
