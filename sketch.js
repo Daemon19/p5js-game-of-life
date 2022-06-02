@@ -7,7 +7,13 @@ let running = false;
 let nextUpdate = updateTime;
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    canvas = createCanvas(windowWidth, windowHeight);
+    // Disable right click pop up
+    canvas.elt.oncontextmenu = e => {
+        e.preventDefault();
+        e.stopPropagation();
+    };
+
     initGrid();
 }
 
